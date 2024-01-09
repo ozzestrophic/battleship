@@ -56,7 +56,7 @@ class Gameboard {
   receiveAttack(coords) {
     for (const key in this) {
       if (!this[key].squares) {
-        return;
+        continue;
       }
       if (
         this[key].squares.some(
@@ -64,8 +64,10 @@ class Gameboard {
         )
       ) {
         this[key].hit();
+        return;
       }
     }
+    this.missedShots.push(coords);
   }
 }
 

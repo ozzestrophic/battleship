@@ -58,12 +58,21 @@ describe("test gameboard", () => {
     expect(gameBoard.ship1.length).toEqual(4);
   });
 
-  test("gamboard recieve attack", () => {
+  test("gamboard recieve correct attacks", () => {
     const gameBoard = new Gameboard([3, [2, 2], [4, 2]], [4, [4, 4], [7, 4]]);
     gameBoard.receiveAttack([5, 4]);
     gameBoard.receiveAttack([4, 4]);
     gameBoard.receiveAttack([5, 2]);
 
     expect(gameBoard.ship1.hits).toBe(2);
+  });
+
+  test("gamboard recieve missed attacks", () => {
+    const gameBoard = new Gameboard([3, [2, 2], [4, 2]], [4, [4, 4], [7, 4]]);
+    gameBoard.receiveAttack([5, 4]);
+    gameBoard.receiveAttack([8, 4]);
+    gameBoard.receiveAttack([5, 2]);
+
+    expect(gameBoard.missedShots.length).toBe(2);
   });
 });

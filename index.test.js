@@ -60,8 +60,10 @@ describe("test gameboard", () => {
 
   test("gamboard recieve attack", () => {
     const gameBoard = new Gameboard([3, [2, 2], [4, 2]], [4, [4, 4], [7, 4]]);
-    gameBoard.recieveAttack([3, 2]);
+    gameBoard.receiveAttack([5, 4]);
+    gameBoard.receiveAttack([4, 4]);
+    gameBoard.receiveAttack([5, 2]);
 
-    expect(gameBoard.ship0.hits).toBe(1);
+    expect(gameBoard.ship1.hits).toBe(2);
   });
 });

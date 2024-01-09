@@ -9,6 +9,7 @@ class Ship {
   }
 
   placeSingleShip(length, head, tail) {
+    // place ships whether coordinates are horizontal or vertical
     if (tail[0] - head[0] === length - 1 && head[1] === tail[1]) {
       this.head = head;
       this.tail = tail;
@@ -49,9 +50,23 @@ class Gameboard {
     for (let i = 0; i < args.length; i++) {
       this[`ship${i}`] = new Ship(...args[i]);
     }
+    // LATER handle ships collision .. no ships allowed same suqares
   }
 
-  recieveAttack(coords) {}
+  receiveAttack(coords) {
+    for (const key in this) {
+      if (!this[key].squares) {
+        return;
+      }
+      if (
+        this[key].squares.some(
+          (square) => square[0] === coords[0] && square[1] === coords[1]
+        )
+      ) {
+        this[key].hit();
+      }
+    }
+  }
 }
 
 export { Ship, Gameboard };

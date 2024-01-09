@@ -75,4 +75,22 @@ describe("test gameboard", () => {
 
     expect(gameBoard.missedShots.length).toBe(2);
   });
+
+  test("game not over", () => {
+    const gameBoard = new Gameboard([3, [2, 2], [4, 2]], [2, [4, 4], [5, 4]]);
+    gameBoard.receiveAttack([2, 2]);
+    gameBoard.receiveAttack([3, 2]);
+    gameBoard.receiveAttack([4, 4]);
+
+    expect(gameBoard.receiveAttack([5, 4])).toBe("not yet");
+  });
+  test("game over", () => {
+    const gameBoard = new Gameboard([3, [2, 2], [4, 2]], [2, [4, 4], [5, 4]]);
+    gameBoard.receiveAttack([2, 2]);
+    gameBoard.receiveAttack([3, 2]);
+    gameBoard.receiveAttack([4, 2]);
+    gameBoard.receiveAttack([4, 4]);
+
+    expect(gameBoard.receiveAttack([5, 4])).toBe("game over");
+  });
 });

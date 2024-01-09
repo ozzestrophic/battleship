@@ -44,6 +44,7 @@ class Gameboard {
   constructor(...args) {
     this.placeShips(args);
     this.missedShots = [];
+    this.shipsSunk = false;
   }
 
   placeShips(args) {
@@ -64,10 +65,24 @@ class Gameboard {
         )
       ) {
         this[key].hit();
-        return;
+        this[key].isSunk();
+        return this.checkShipsSunk();
       }
     }
     this.missedShots.push(coords);
+  }
+
+  checkShipsSunk() {
+    for (const key in this) {
+      if (!this[key].squares) {
+        continue;
+      }
+      if (!this[key].sunk) {
+        return "not yet";
+      }
+      this.shipsSunk = true;
+      return "game over";
+    }
   }
 }
 

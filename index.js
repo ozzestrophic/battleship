@@ -29,7 +29,7 @@ class Ship {
 
   hit() {
     this.hits++;
-    // this.isSunk();
+    this.isSunk();
   }
 
   isSunk() {
@@ -44,6 +44,7 @@ class Gameboard {
   constructor(...args) {
     this.placeShips(args);
     this.missedShots = [];
+    this.correctShots = [];
     this.shipsSunk = false;
   }
 
@@ -65,7 +66,7 @@ class Gameboard {
         )
       ) {
         this[key].hit();
-        this[key].isSunk();
+        this.correctShots.push(coords);
         return this.checkShipsSunk();
       }
     }

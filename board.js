@@ -67,11 +67,10 @@ class Gameboard {
         )
       ) {
         this[key].hit();
-        this.prevShots.push(coords);
-        return this.checkShipsSunk();
       }
     }
     this.prevShots.push(coords);
+    return this.checkShipsSunk();
   }
 
   checkShipsSunk() {

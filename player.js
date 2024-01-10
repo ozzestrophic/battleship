@@ -1,8 +1,8 @@
 import { ship, Gameboard } from "./board.js";
 
 class Player {
-  constructor() {
-    this.name = "ai";
+  constructor(name) {
+    this.name = name || "ai";
     this.gameBoard;
   }
 
@@ -18,7 +18,10 @@ class Player {
         (square) => square[0] === coords[0] && square[1] === coords[1]
       )
     ) {
+      return "can't repeat";
     }
+
+    board.receiveAttack(coords);
   }
 
   aiAttack() {
@@ -26,6 +29,8 @@ class Player {
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10),
     ];
-    return this.aiAttack;
+    return coords;
   }
 }
+
+export { Player };

@@ -11,6 +11,10 @@ template.innerHTML = `
         background-color: #EEEEEE;
     }
 
+    .ship {
+        border: solid blue 1px;
+    }
+
     .shot {
         background-color: red;
     }

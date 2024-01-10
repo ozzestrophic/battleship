@@ -10,12 +10,26 @@
     <header class="bg-slate-100 h-28 flex items-center justify-center">
       <h1 class="text-3xl">BattleShip</h1>
     </header>
-    <main class="flex items-center justify-center p-4">
-      <div
-        id="gameboard-container"
-        class="w-80 h-80 border border-black box-content flex flex-wrap"
-      ></div>
+    <main class="flex flex-col items-center">
+      <h1 class="pt-4 text-2xl">Play the game</h1>
+      <div class="flex gap-8 items-center justify-center p-4">
+        <div class="flex flex-col">
+          <h3>Player board</h3>
+          <div
+            id="gameboard-container"
+            class="w-80 h-80 border border-black box-content flex flex-wrap"
+          ></div>
+        </div>
+        <div class="flex flex-col">
+          <h3>AI board</h3>
+          <div
+            id="aiboard-container"
+            class="w-80 h-80 border border-black box-content flex flex-wrap"
+          ></div>
+        </div>
+      </div>
     </main>
     <script type="module" src="script.js"></script>
+    <script type="module" src="./js/gameLoop.js"></script>
   </body>
 </html>

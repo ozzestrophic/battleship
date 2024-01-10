@@ -43,8 +43,7 @@ class Ship {
 class Gameboard {
   constructor(...args) {
     this.placeShips(args);
-    // this.missedShots = [];
-    // this.correctShots = [];
+
     this.prevShots = [];
     this.shipsSunk = false;
   }

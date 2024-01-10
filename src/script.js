@@ -16,6 +16,7 @@ for (let i = 0; i < 10; i++) {
 }
 
 function registerClick(event) {
-  console.log(event.target.id);
+  event.target.shadowRoot.querySelector("div").classList.add("shot");
+  console.log(event.target);
   return event.target.id;
 }

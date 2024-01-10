@@ -7,8 +7,12 @@ template.innerHTML = `
         border: solid #DDDDDD .5px;
         box-sizing: border-box;     
     }
-    .square:hover {
-        background-color: #EEEEEE
+    .square:hover:not(.shot) {
+        background-color: #EEEEEE;
+    }
+
+    .shot {
+        background-color: red;
     }
 </style>
 

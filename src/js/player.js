@@ -10,7 +10,7 @@ class Player {
 
   attackEnemy(board, coords) {
     if (this.name === "ai") {
-      coords = this.aiAttack();
+      coords = this.aiAttackCoord();
     }
 
     if (
@@ -24,7 +24,7 @@ class Player {
     board.receiveAttack(coords);
   }
 
-  aiAttack() {
+  aiAttackCoord() {
     let coords = [
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10),

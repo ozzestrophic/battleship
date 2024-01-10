@@ -9,6 +9,13 @@ console.log(gameboard);
 for (let i = 0; i < 10; i++) {
   for (let j = 0; j < 10; j++) {
     const square = document.createElement("gameboard-square");
+    square.id = `[${j}, ${i}]`;
+    square.addEventListener("click", registerClick);
     gameboard.appendChild(square);
   }
+}
+
+function registerClick(event) {
+  console.log(event.target.id);
+  return event.target.id;
 }

@@ -4,9 +4,11 @@ template.innerHTML = `
     .square {
         width: 32px;
         height: 32px;
-        border: solid red 1px;
-        box-sizing: border-box;
-        
+        border: solid #DDDDDD .5px;
+        box-sizing: border-box;     
+    }
+    .square:hover {
+        background-color: #EEEEEE
     }
 </style>
 

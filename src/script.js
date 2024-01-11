@@ -42,4 +42,24 @@ function registerClick(event) {
   return event.target.id;
 }
 
+function waitForPlayerClick() {
+  return new Promise((resolve) => {
+    document
+      .querySelector("#gameboard-container")
+      .addEventListener("click", (event) => {
+        const coords = event.target.id;
+        resolve(coords);
+      });
+  });
+}
+
+async function startGame() {
+  const clickedCoords = await waitForPlayerClick();
+  console.log("Player clicked", clickedCoords);
+
+  console.log("continue");
+}
+
+startGame();
+
 export { drawBoard, gameboardDiv, aiboardDiv, addListeners };

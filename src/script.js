@@ -2,8 +2,8 @@ import { GameboardSquare } from "./js/gameboardSquare.js";
 
 customElements.define("gameboard-square", GameboardSquare);
 
-const gameboard = document.querySelector("#gameboard-container");
-const aiboard = document.querySelector("#aiboard-container");
+const gameboardDiv = document.querySelector("#gameboard-container");
+const aiboardDiv = document.querySelector("#aiboard-container");
 
 function drawBoard(board, container) {
   for (let i = 0; i < 10; i++) {
@@ -23,16 +23,23 @@ function drawBoard(board, container) {
         }
       }
 
-      square.addEventListener("click", registerClick);
       container.appendChild(square);
     }
   }
 }
 
+async function addListeners(container) {
+  Array.from(container.childNodes).forEach((child) => {
+    child.addEventListener("click", registerClick);
+  });
+}
+
 function registerClick(event) {
   event.target.shadowRoot.querySelector("div").classList.add("shot");
+
+  // send data to the gameboard class?
   console.log(event.target.id);
   return event.target.id;
 }
 
-export { drawBoard, gameboard, aiboard };
+export { drawBoard, gameboardDiv, aiboardDiv, addListeners };

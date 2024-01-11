@@ -1,6 +1,11 @@
 import { Gameboard } from "./board.js";
 import { Player } from "./player.js";
-import { aiboard, drawBoard, gameboard } from "../script.js";
+import {
+  addListeners,
+  aiboardDiv,
+  drawBoard,
+  gameboardDiv,
+} from "../script.js";
 
 function createGame() {
   const player1 = new Player("me");
@@ -14,22 +19,7 @@ function createGame() {
 
 const game = createGame();
 
-drawBoard(game.playerBoard, gameboard);
-drawBoard(game.aiBoard, aiboard);
+drawBoard(game.playerBoard, gameboardDiv);
+drawBoard(game.aiBoard, aiboardDiv);
 
-// while (true) {
-//   if (game.playerTurn) {
-//     const attackCoords = []; // return coords from game module
-//     // function adds event listener to all blocks
-//     // and returns the value of the block that is clicked
-
-//     game.player1.attackEnemy(game.aiBoard, attackCoords);
-//     // if the block is clicked before it alerts the user to choose another block
-
-//     game.playerTurn = false;
-//   } else {
-//     game.ai.attackEnemy(playerBoard);
-
-//     game.playerTurn = true;
-//   }
-// }
+addListeners(aiboardDiv);

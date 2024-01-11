@@ -6,7 +6,7 @@ class Player {
     this.gameBoard;
   }
 
-  createGameboard() {}
+  // createGameboard() {}
 
   attackEnemy(board, coords) {
     if (this.name === "ai") {
@@ -18,10 +18,12 @@ class Player {
         (square) => square[0] === coords[0] && square[1] === coords[1]
       )
     ) {
-      return "can't repeat";
+      console.log("can't repeat");
+      return false;
     }
 
     board.receiveAttack(coords);
+    return true;
   }
 
   aiAttackCoord() {

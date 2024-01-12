@@ -1,10 +1,10 @@
 import { Gameboard } from "./board.js";
 import { Player } from "./player.js";
 import {
-  addListeners,
   aiboardDiv,
   drawBoard,
   gameboardDiv,
+  waitForPlayerTurn,
 } from "../script.js";
 
 function createGame() {
@@ -22,4 +22,10 @@ const game = createGame();
 drawBoard(game.playerBoard, gameboardDiv);
 drawBoard(game.aiBoard, aiboardDiv);
 
-// addListeners(aiboardDiv);
+let gameRunning = true;
+
+while (gameRunning) {
+  const coords = await waitForPlayerTurn();
+
+  console.log(coords);
+}

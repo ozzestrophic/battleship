@@ -9,7 +9,7 @@ function drawBoard(board, container) {
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       const square = document.createElement("gameboard-square");
-      square.id = `[${j}, ${i}]`;
+      square.id = `${j}, ${i}`;
       for (const key in board) {
         if (!board[key].squares) {
           continue;
@@ -28,43 +28,30 @@ function drawBoard(board, container) {
   }
 }
 
-async function addListeners(container) {
-  Array.from(container.childNodes).forEach((child) => {
-    child.addEventListener("click", registerClick);
-  });
-}
-
-function registerClick(event) {
-  event.target.shadowRoot.querySelector("div").classList.add("shot");
-
-  // send data to the gameboard class?
-  console.log(event.target.id);
-  return event.target.id;
-}
-
-function waitForPlayerClick() {
+function listenToPlayerClick() {
   return new Promise((resolve) => {
     document
       .querySelector("#aiboard-container")
       .addEventListener("click", function addEVents(event) {
         event.target.shadowRoot.querySelector("div").classList.add("shot");
-        const coords = event.target.id;
+        const coords = event.target.id.split(",");
 
+        // remove event listeners to prepare for next turn
         document
           .querySelector("#aiboard-container")
           .removeEventListener("click", addEVents);
+
         resolve(coords);
       });
   });
 }
 
-async function startGame() {
-  const clickedCoords = await waitForPlayerClick();
+async function waitForPlayerTurn() {
+  const clickedCoords = await listenToPlayerClick();
   console.log("Player clicked", clickedCoords);
 
   console.log("continue");
+  return clickedCoords;
 }
 
-startGame();
-
-export { drawBoard, gameboardDiv, aiboardDiv, addListeners };
+export { drawBoard, gameboardDiv, aiboardDiv, waitForPlayerTurn };

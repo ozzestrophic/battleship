@@ -79,10 +79,10 @@ class Gameboard {
         continue;
       }
       if (!this[key].sunk) {
-        return "not yet";
+        return false;
       }
       this.shipsSunk = true;
-      return "game over";
+      return true;
     }
   }
 }

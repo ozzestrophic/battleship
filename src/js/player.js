@@ -19,11 +19,14 @@ class Player {
       )
     ) {
       console.log("can't repeat", coords);
-      return false;
+      return "didn't Attack";
     }
     console.log("attacked", coords);
-    console.log("boards sunk", board.receiveAttack(coords));
-    return true;
+    if (board.receiveAttack(coords)) {
+      return "Gameover";
+    } else {
+      return "not yet";
+    }
   }
 
   aiAttackCoord() {

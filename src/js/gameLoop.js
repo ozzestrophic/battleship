@@ -26,5 +26,11 @@ let gameRunning = true;
 
 while (gameRunning) {
   const coords = await waitForPlayerTurn();
-  game.player1.attackEnemy(game.aiBoard, coords);
+  const attackStatus = game.player1.attackEnemy(game.aiBoard, coords);
+  if (attackStatus === "didn't Attack") {
+    console.log("try a different square");
+  } else if (attackStatus === "Gameover") {
+    console.log("GAMEOVER");
+    gameRunning = false;
+  }
 }

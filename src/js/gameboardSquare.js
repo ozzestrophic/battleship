@@ -18,6 +18,10 @@ template.innerHTML = `
     .shot {
         background-color: red;
     }
+
+    .shot.ship {
+        background-color: blue;
+    }
 </style>
 
 <div class ="square">

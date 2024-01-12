@@ -23,14 +23,35 @@ drawBoard(game.playerBoard, gameboardDiv);
 drawBoard(game.aiBoard, aiboardDiv);
 
 let gameRunning = true;
+let playerTurn = true;
+let aiTurn = false;
 
 while (gameRunning) {
-  const coords = await waitForPlayerTurn();
-  const attackStatus = game.player1.attackEnemy(game.aiBoard, coords);
-  if (attackStatus === "didn't Attack") {
-    console.log("try a different square");
-  } else if (attackStatus === "Gameover") {
-    console.log("GAMEOVER");
-    gameRunning = false;
+  while (playerTurn) {
+    const coords = await waitForPlayerTurn();
+    const attackStatus = game.player1.attackEnemy(game.aiBoard, coords);
+    if (attackStatus === "didn't Attack") {
+      console.log("try a different square");
+    } else if (attackStatus === "Gameover") {
+      console.log("GAMEOVER");
+      playerTurn = false;
+      gameRunning = false;
+    } else if (attackStatus === "not yet") {
+      playerTurn = false;
+      aiTurn = true;
+    }
+  }
+  while (aiTurn) {
+    const attackStatus = game.ai.attackEnemy(game.playerBoard);
+    if (attackStatus === "didn't Attack") {
+      console.log("try a different square");
+    } else if (attackStatus === "Gameover") {
+      console.log("GAMEOVER");
+      aiTurn = false;
+      gameRunning = false;
+    } else if (attackStatus === "not yet") {
+      aiTurn = false;
+      playerTurn = true;
+    }
   }
 }

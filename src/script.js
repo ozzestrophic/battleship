@@ -9,7 +9,7 @@ function drawBoard(board, container) {
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       const square = document.createElement("gameboard-square");
-      square.id = `${j}, ${i}`;
+      square.id = `${j}${i}`;
       for (const key in board) {
         if (!board[key].squares) {
           continue;
@@ -34,7 +34,7 @@ function listenToPlayerClick() {
       .querySelector("#aiboard-container")
       .addEventListener("click", function addEVents(event) {
         event.target.shadowRoot.querySelector("div").classList.add("shot");
-        const coords = event.target.id.split(",");
+        const coords = Array.from(event.target.id, Number);
 
         // remove event listeners to prepare for next turn
         document
@@ -48,9 +48,7 @@ function listenToPlayerClick() {
 
 async function waitForPlayerTurn() {
   const clickedCoords = await listenToPlayerClick();
-  console.log("Player clicked", clickedCoords);
 
-  console.log("continue");
   return clickedCoords;
 }
 

@@ -26,6 +26,5 @@ let gameRunning = true;
 
 while (gameRunning) {
   const coords = await waitForPlayerTurn();
-
-  console.log(coords);
+  game.player1.attackEnemy(game.aiBoard, coords);
 }

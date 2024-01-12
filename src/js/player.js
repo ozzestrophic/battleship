@@ -18,11 +18,11 @@ class Player {
         (square) => square[0] === coords[0] && square[1] === coords[1]
       )
     ) {
-      console.log("can't repeat");
+      console.log("can't repeat", coords);
       return false;
     }
-
-    board.receiveAttack(coords);
+    console.log("attacked", coords);
+    console.log("boards sunk", board.receiveAttack(coords));
     return true;
   }
 

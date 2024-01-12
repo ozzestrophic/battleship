@@ -58,4 +58,15 @@ function aiAttackDom(coords) {
   square.shadowRoot.querySelector("div").classList.add("shot");
 }
 
-export { drawBoard, gameboardDiv, aiboardDiv, waitForPlayerTurn, aiAttackDom };
+const resetBtn = document.getElementById("resetBtn");
+const gameOverSpan = document.getElementById("gameOver");
+
+export {
+  drawBoard,
+  gameboardDiv,
+  aiboardDiv,
+  waitForPlayerTurn,
+  aiAttackDom,
+  resetBtn,
+  gameOverSpan,
+};

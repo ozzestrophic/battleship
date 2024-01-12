@@ -52,4 +52,10 @@ async function waitForPlayerTurn() {
   return clickedCoords;
 }
 
-export { drawBoard, gameboardDiv, aiboardDiv, waitForPlayerTurn };
+function aiAttackDom(coords) {
+  let id = coords.join("");
+  const square = document.getElementById(id);
+  square.shadowRoot.querySelector("div").classList.add("shot");
+}
+
+export { drawBoard, gameboardDiv, aiboardDiv, waitForPlayerTurn, aiAttackDom };

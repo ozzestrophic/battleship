@@ -81,9 +81,9 @@ class Gameboard {
       if (!this[key].sunk) {
         return false;
       }
-      this.shipsSunk = true;
-      return true;
     }
+    this.shipsSunk = true;
+    return true;
   }
 }
 

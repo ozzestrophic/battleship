@@ -1,3 +1,4 @@
+import { aiAttackDom } from "../script.js";
 import { Ship, Gameboard } from "./board.js";
 
 class Player {
@@ -34,6 +35,7 @@ class Player {
       Math.floor(Math.random() * 10),
       Math.floor(Math.random() * 10),
     ];
+    aiAttackDom(coords);
     return coords;
   }
 }

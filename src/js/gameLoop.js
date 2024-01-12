@@ -22,4 +22,4 @@ const game = createGame();
 drawBoard(game.playerBoard, gameboardDiv);
 drawBoard(game.aiBoard, aiboardDiv);
 
-addListeners(aiboardDiv);
+// addListeners(aiboardDiv);

@@ -45,9 +45,14 @@ function registerClick(event) {
 function waitForPlayerClick() {
   return new Promise((resolve) => {
     document
-      .querySelector("#gameboard-container")
-      .addEventListener("click", (event) => {
+      .querySelector("#aiboard-container")
+      .addEventListener("click", function addEVents(event) {
+        event.target.shadowRoot.querySelector("div").classList.add("shot");
         const coords = event.target.id;
+
+        document
+          .querySelector("#aiboard-container")
+          .removeEventListener("click", addEVents);
         resolve(coords);
       });
   });

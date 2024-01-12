@@ -9,6 +9,8 @@ import {
   waitForPlayerTurn,
 } from "../script.js";
 
+let game;
+
 async function gameLoop() {
   function createGame() {
     const player1 = new Player("me");
@@ -20,7 +22,7 @@ async function gameLoop() {
     return { player1, ai, playerBoard, aiBoard, playerTurn };
   }
 
-  const game = createGame();
+  game = createGame();
 
   drawBoard(game.playerBoard, gameboardDiv);
   drawBoard(game.aiBoard, aiboardDiv);
@@ -68,6 +70,8 @@ resetBtn.addEventListener("click", () => {
   gameboardDiv.innerHTML = "";
   aiboardDiv.innerHTML = "";
   gameOverSpan.innerText = "";
+
+  game = null;
 
   gameLoop();
 });
